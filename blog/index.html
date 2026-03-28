@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Alex Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+
+<nav>
+  <a class="nav-logo" href="/">Alex Liu</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/100-things/">100 Things</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="inner-hero">
+  <div class="inner-hero-label">Writing</div>
+  <h1 class="inner-hero-title">
+    Things<br>
+    I've <em>written.</em>
+  </h1>
+  <p class="inner-hero-sub">
+    On data science, side projects, and the occasional thought that wouldn't leave me alone.
+  </p>
+</div>
+
+<!-- BLOG LISTING -->
+<div class="blog-container">
+  <div class="blog-grid">
+
+    <a href="/blog/posts/hello-world.html" class="blog-card reveal">
+      <span class="blog-date">Mar 2025</span>
+      <div>
+        <div class="blog-card-title">Why I Started Writing</div>
+        <p class="blog-card-teaser">
+          I spend my days making sense of data for other people. Writing, I've discovered, is how I make sense of things for myself.
+        </p>
+        <div class="blog-card-meta">5 min read · Reflections</div>
+      </div>
+      <span class="blog-card-arrow">↗</span>
+    </a>
+
+    <!-- Add new posts above this comment by duplicating the block above.
+         Then create a matching HTML file in /blog/posts/.
+         Format:
+         <a href="/blog/posts/your-post-slug.html" class="blog-card reveal">
+           <span class="blog-date">Mon YYYY</span>
+           <div>
+             <div class="blog-card-title">Your Post Title</div>
+             <p class="blog-card-teaser">One sentence that makes someone want to read it.</p>
+             <div class="blog-card-meta">X min read · Category</div>
+           </div>
+           <span class="blog-card-arrow">↗</span>
+         </a>
+    -->
+
+  </div>
+</div>
+
+<footer>
+  <span>Alex Liu © 2025</span>
+  <span>Data Scientist · Builder</span>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -5,557 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Liu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --klein: #0033CC;
-      --black: #0a0a0a;
-      --white: #ffffff;
-      --grey: #f5f5f5;
-      --mid: #999;
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --mono: 'DM Mono', monospace;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--white);
-      color: var(--black);
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* CURSOR */
-    .cur {
-      position: fixed;
-      width: 8px; height: 8px;
-      background: var(--klein);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width .2s, height .2s, background .2s, border-radius .2s;
-    }
-    .cur.big {
-      width: 40px; height: 40px;
-      background: transparent;
-      border: 1px solid var(--klein);
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 500;
-      padding: 28px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      color: var(--black);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--black);
-      text-decoration: none;
-      opacity: 0.4;
-      transition: opacity .25s;
-    }
-    .nav-links a:hover { opacity: 1; }
-
-    /* HERO */
-    #hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 60px 80px;
-      position: relative;
-    }
-
-    .hero-index {
-      position: absolute;
-      top: 50%;
-      right: 60px;
-      transform: translateY(-50%);
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid);
-      writing-mode: vertical-rl;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .hero-index::before {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 60px;
-      background: rgba(0,0,0,0.15);
-    }
-
-    .hero-eyebrow {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--klein);
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp .8s .2s ease forwards;
-    }
-
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(5rem, 11vw, 10rem);
-      font-weight: 300;
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      color: var(--black);
-      opacity: 0;
-      animation: fadeUp .9s .35s ease forwards;
-    }
-    .hero-name span {
-      display: block;
-      font-style: italic;
-      color: var(--klein);
-    }
-
-    .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 60px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      opacity: 0;
-      animation: fadeUp .8s .6s ease forwards;
-    }
-    .hero-desc {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: var(--mid);
-      max-width: 340px;
-      line-height: 1.75;
-      letter-spacing: 0.01em;
-    }
-    .hero-scroll {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .hero-scroll::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--mid);
-      animation: scrollLine 1.6s ease-in-out infinite alternate;
-    }
-    @keyframes scrollLine { from { width: 20px; opacity: .3; } to { width: 60px; opacity: .8; } }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ABOUT */
-    #about {
-      padding: 120px 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: start;
-    }
-    .section-label {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 40px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--mid);
-    }
-    .section-label.light { color: rgba(255,255,255,0.35); }
-    .section-label.light::before { background: rgba(255,255,255,0.2); }
-
-    .about-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 32px;
-    }
-    .about-heading em { font-style: italic; color: var(--klein); }
-
-    .about-body {
-      font-size: 0.88rem;
-      font-weight: 300;
-      line-height: 1.85;
-      color: #666;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: rgba(0,0,0,0.08);
-      margin-top: 64px;
-    }
-    .stat-cell {
-      background: var(--white);
-      padding: 36px 28px;
-    }
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 3rem;
-      font-weight: 300;
-      line-height: 1;
-      color: var(--black);
-    }
-    .stat-num.blue { color: var(--klein); }
-    .stat-label {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-top: 6px;
-    }
-
-    /* SKILLS — KLEIN BG */
-    #skills {
-      padding: 100px 60px;
-      background: var(--klein);
-      color: var(--white);
-    }
-
-    .skills-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 80px;
-    }
-    .skills-heading em { font-style: italic; opacity: 0.45; }
-
-    .skill-list { display: flex; flex-direction: column; }
-    .skill-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      transition: padding-left .3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-row:first-child { border-top: 1px solid rgba(255,255,255,0.12); }
-    .skill-row::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 0;
-      background: rgba(255,255,255,0.06);
-      transition: width .4s ease;
-    }
-    .skill-row:hover::before { width: 100%; }
-    .skill-row:hover { padding-left: 16px; }
-
-    .skill-name-wrap { display: flex; align-items: center; gap: 28px; }
-    .skill-idx {
-      font-family: var(--mono);
-      font-size: 9px;
-      opacity: 0.3;
-      letter-spacing: 0.1em;
-      min-width: 24px;
-    }
-    .skill-name {
-      font-family: var(--serif);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 300;
-      letter-spacing: -0.01em;
-    }
-    .skill-tags-wrap { display: flex; gap: 8px; }
-    .skill-tag {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border: 1px solid rgba(255,255,255,0.25);
-      opacity: 0.6;
-    }
-
-    /* WORK */
-    #work { padding: 120px 60px; }
-
-    .work-list { display: flex; flex-direction: column; margin-top: 64px; }
-    .work-item {
-      display: grid;
-      grid-template-columns: 80px 1fr 40px;
-      align-items: start;
-      gap: 40px;
-      padding: 48px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      cursor: none;
-      transition: background .2s, padding .2s;
-    }
-    .work-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
-    .work-item:hover { background: var(--grey); margin: 0 -60px; padding-left: 60px; padding-right: 60px; }
-    .work-num {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.15em;
-      color: var(--mid);
-      padding-top: 6px;
-    }
-    .work-cat {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--klein);
-      margin-bottom: 10px;
-    }
-    .work-title {
-      font-family: var(--serif);
-      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      margin-bottom: 12px;
-      transition: color .25s;
-    }
-    .work-item:hover .work-title { color: var(--klein); }
-    .work-desc {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: var(--mid);
-      max-width: 480px;
-      line-height: 1.7;
-    }
-    .work-arrow {
-      font-size: 1.2rem;
-      color: var(--mid);
-      padding-top: 4px;
-      transition: transform .3s, color .25s;
-    }
-    .work-item:hover .work-arrow { transform: translate(4px,-4px); color: var(--klein); }
-
-    /* TIMELINE — BLACK BG */
-    #timeline {
-      padding: 120px 60px;
-      background: var(--black);
-      color: var(--white);
-    }
-    .tl-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 80px;
-      margin-top: 64px;
-    }
-    .tl-item {
-      padding: 40px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .tl-year {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.18em;
-      color: var(--klein);
-      margin-bottom: 16px;
-    }
-    .tl-role {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 300;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .tl-company {
-      font-size: 0.8rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.04em;
-    }
-
-    /* CONTACT */
-    #contact {
-      padding: 140px 60px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-bg {
-      position: absolute;
-      bottom: -6vw;
-      right: -2vw;
-      font-family: var(--serif);
-      font-size: clamp(8rem, 20vw, 20rem);
-      font-weight: 300;
-      font-style: italic;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(0,51,204,0.07);
-      pointer-events: none;
-      line-height: 1;
-      white-space: nowrap;
-      user-select: none;
-    }
-    .contact-inner { position: relative; z-index: 1; max-width: 640px; }
-    .contact-heading {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 6vw, 6rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 20px;
-    }
-    .contact-heading em { font-style: italic; color: var(--klein); }
-    .contact-sub {
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--mid);
-      line-height: 1.7;
-      margin-bottom: 64px;
-      max-width: 360px;
-    }
-    .contact-links { display: flex; flex-direction: column; }
-    .contact-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      text-decoration: none;
-      color: var(--black);
-      transition: padding-left .3s;
-    }
-    .contact-link:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
-    .contact-link:hover { padding-left: 12px; }
-    .cl-left { display: flex; align-items: center; gap: 24px; }
-    .cl-type {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mid);
-      min-width: 64px;
-    }
-    .cl-val {
-      font-family: var(--serif);
-      font-size: 1.3rem;
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      transition: color .25s;
-    }
-    .contact-link:hover .cl-val { color: var(--klein); }
-    .cl-arrow {
-      font-size: 1rem;
-      color: var(--mid);
-      transition: transform .3s, color .25s;
-    }
-    .contact-link:hover .cl-arrow { transform: translate(4px,-4px); color: var(--klein); }
-
-    /* FOOTER */
-    footer {
-      padding: 28px 60px;
-      border-top: 1px solid rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    footer span {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
-
-    /* REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-    .d1 { transition-delay: .1s; }
-    .d2 { transition-delay: .2s; }
-    .d3 { transition-delay: .3s; }
-
-    @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
-      #hero, #about, #work, #skills, #timeline, #contact, footer { padding-left: 24px; padding-right: 24px; }
-      #about { grid-template-columns: 1fr; gap: 48px; padding-top: 80px; }
-      .tl-grid { grid-template-columns: 1fr; }
-      .work-item { grid-template-columns: 48px 1fr; }
-      .work-arrow { display: none; }
-      .hero-index { display: none; }
-      .hero-name { font-size: clamp(3.5rem, 14vw, 6rem); }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
 <div class="cur" id="cur"></div>
 
 <nav>
-  <a class="nav-logo" href="#">Alex Liu</a>
+  <a class="nav-logo" href="/">Alex Liu</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#work">Work</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/100-things/">100 Things</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-index">Web Designer · Data Expert</div>
-  <div class="hero-eyebrow">Portfolio — 2025</div>
+  <div class="hero-index">Data Scientist · Builder · Human</div>
+  <div class="hero-eyebrow">Personal Hub — 2025</div>
   <h1 class="hero-name">
     Alex<br>
     <span>Liu.</span>
   </h1>
   <div class="hero-bottom">
     <p class="hero-desc">
-      Web designer & data expert — designing systems that are precise, purposeful, and beautiful.
+      I turn data into stories, build things on the side, and write when I have something to say. Occasionally I just live my life.
     </p>
     <div class="hero-scroll">Scroll</div>
   </div>
@@ -566,31 +43,55 @@
   <div class="reveal">
     <div class="section-label">Profile</div>
     <h2 class="about-heading">
-      Design meets<br>
-      <em>data intelligence.</em>
+      Numbers by day,<br>
+      <em>ideas always.</em>
     </h2>
     <p class="about-body">
-      I work at the intersection of visual design and data systems. Websites crafted with intention. Dashboards that reveal, not confuse. Every project begins with a question: what should this make someone feel, understand, or do?
+      I'm a data scientist at a SaaS company, where I spend my days wrestling with messy datasets, building models, and translating complex analysis into decisions people can actually act on. I hold a Master's in Applied Computing.<br><br>
+      Outside of work, I'm curious about too many things at once — building side projects, writing about what I learn, and slowly working through a list of 100 things I want to do before I die. This site is where all of that lives.
     </p>
   </div>
   <div class="reveal d2">
     <div class="stat-grid">
       <div class="stat-cell">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Years</div>
+        <div class="stat-num sm">M.Sc.</div>
+        <div class="stat-label">Applied Computing</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-num blue">120</div>
-        <div class="stat-label">Projects</div>
+        <div class="stat-num blue sm">Data<br>Scientist</div>
+        <div class="stat-label">@ SaaS Co</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-num">32</div>
-        <div class="stat-label">Clients</div>
+        <div class="stat-num">100</div>
+        <div class="stat-label">Things to do</div>
       </div>
       <div class="stat-cell">
         <div class="stat-num blue">∞</div>
         <div class="stat-label">Curiosity</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOW -->
+<section id="now">
+  <div class="section-label reveal">Now</div>
+  <div class="now-grid reveal d1">
+    <div class="now-item">
+      <span class="now-cat">Working on</span>
+      <span class="now-text">Product analytics & churn prediction models at work</span>
+    </div>
+    <div class="now-item">
+      <span class="now-cat">Reading</span>
+      <span class="now-text">The Pragmatic Programmer — finally getting around to it</span>
+    </div>
+    <div class="now-item">
+      <span class="now-cat">Building</span>
+      <span class="now-text">This personal site — always a work in progress</span>
+    </div>
+    <div class="now-item">
+      <span class="now-cat">Thinking about</span>
+      <span class="now-text">What makes a data insight actually useful vs. just interesting</span>
     </div>
   </div>
 </section>
@@ -605,16 +106,27 @@
     <div class="skill-row reveal">
       <div class="skill-name-wrap">
         <span class="skill-idx">01</span>
-        <span class="skill-name">Web & Interface Design</span>
+        <span class="skill-name">Data Analysis & Modelling</span>
       </div>
       <div class="skill-tags-wrap">
-        <span class="skill-tag">Figma</span>
-        <span class="skill-tag">Prototyping</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">pandas</span>
       </div>
     </div>
     <div class="skill-row reveal d1">
       <div class="skill-name-wrap">
         <span class="skill-idx">02</span>
+        <span class="skill-name">Machine Learning</span>
+      </div>
+      <div class="skill-tags-wrap">
+        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">XGBoost</span>
+      </div>
+    </div>
+    <div class="skill-row reveal d2">
+      <div class="skill-name-wrap">
+        <span class="skill-idx">03</span>
         <span class="skill-name">Data Visualization</span>
       </div>
       <div class="skill-tags-wrap">
@@ -622,29 +134,9 @@
         <span class="skill-tag">Tableau</span>
       </div>
     </div>
-    <div class="skill-row reveal d2">
-      <div class="skill-name-wrap">
-        <span class="skill-idx">03</span>
-        <span class="skill-name">Front-End Development</span>
-      </div>
-      <div class="skill-tags-wrap">
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">CSS</span>
-      </div>
-    </div>
     <div class="skill-row reveal d3">
       <div class="skill-name-wrap">
         <span class="skill-idx">04</span>
-        <span class="skill-name">Data Analysis</span>
-      </div>
-      <div class="skill-tags-wrap">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-      </div>
-    </div>
-    <div class="skill-row reveal">
-      <div class="skill-name-wrap">
-        <span class="skill-idx">05</span>
         <span class="skill-name">Dashboard & BI Systems</span>
       </div>
       <div class="skill-tags-wrap">
@@ -652,13 +144,24 @@
         <span class="skill-tag">Power BI</span>
       </div>
     </div>
+    <div class="skill-row reveal">
+      <div class="skill-name-wrap">
+        <span class="skill-idx">05</span>
+        <span class="skill-name">Front-End Development</span>
+      </div>
+      <div class="skill-tags-wrap">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">CSS</span>
+      </div>
+    </div>
     <div class="skill-row reveal d1">
       <div class="skill-name-wrap">
         <span class="skill-idx">06</span>
-        <span class="skill-name">Brand Identity</span>
+        <span class="skill-name">Web & Interface Design</span>
       </div>
       <div class="skill-tags-wrap">
-        <span class="skill-tag">Visual Systems</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Prototyping</span>
       </div>
     </div>
   </div>
@@ -666,41 +169,41 @@
 
 <!-- WORK -->
 <section id="work">
-  <div class="section-label reveal">Selected Work</div>
+  <div class="section-label reveal">Selected Projects</div>
   <div class="work-list">
     <div class="work-item reveal">
       <span class="work-num">001</span>
       <div>
-        <div class="work-cat">Data Visualization · Dashboard</div>
-        <h3 class="work-title">Real-Time Analytics Platform</h3>
-        <p class="work-desc">Redesigning the visual language of e-commerce data. 2M+ daily events, distilled into instant clarity.</p>
+        <div class="work-cat">Machine Learning · SaaS</div>
+        <h3 class="work-title">Customer Churn Prediction</h3>
+        <p class="work-desc">Built an end-to-end churn prediction pipeline with XGBoost and SHAP explanations. Reduced churn by surfacing at-risk accounts 30 days earlier.</p>
       </div>
       <span class="work-arrow">↗</span>
     </div>
     <div class="work-item reveal d1">
       <span class="work-num">002</span>
       <div>
-        <div class="work-cat">Web Design · SaaS</div>
-        <h3 class="work-title">Product Design System</h3>
-        <p class="work-desc">200+ components. One cohesive visual language. Built for a team of 12, designed to scale to 100.</p>
+        <div class="work-cat">Data Visualization · Dashboard</div>
+        <h3 class="work-title">Real-Time Analytics Platform</h3>
+        <p class="work-desc">Redesigned the visual language of product event data. 2M+ daily events, distilled into actionable clarity for non-technical stakeholders.</p>
       </div>
       <span class="work-arrow">↗</span>
     </div>
     <div class="work-item reveal d2">
       <span class="work-num">003</span>
       <div>
-        <div class="work-cat">Brand · Strategy</div>
-        <h3 class="work-title">FinTech Brand Refresh</h3>
-        <p class="work-desc">Market analysis meets visual identity. A data-led repositioning across all digital touchpoints.</p>
+        <div class="work-cat">Experimentation · Analysis</div>
+        <h3 class="work-title">A/B Testing Framework</h3>
+        <p class="work-desc">Designed and implemented a company-wide experimentation framework. Standardised how we measure feature impact and make data-driven shipping decisions.</p>
       </div>
       <span class="work-arrow">↗</span>
     </div>
     <div class="work-item reveal">
       <span class="work-num">004</span>
       <div>
-        <div class="work-cat">Web Development · Motion</div>
-        <h3 class="work-title">Interactive Annual Report</h3>
-        <p class="work-desc">Static PDFs are dead. A scrollable, animated web experience replacing the traditional annual report.</p>
+        <div class="work-cat">NLP · Customer Insights</div>
+        <h3 class="work-title">Feedback Sentiment Pipeline</h3>
+        <p class="work-desc">Automated processing of customer support tickets using NLP to surface themes and sentiment trends. Turned 10k monthly tickets into weekly product insights.</p>
       </div>
       <span class="work-arrow">↗</span>
     </div>
@@ -713,64 +216,57 @@
   <div class="tl-grid">
     <div class="tl-item reveal">
       <div class="tl-year">2023 — Present</div>
-      <div class="tl-role">Senior Design &<br>Data Lead</div>
-      <div class="tl-company">Independent · Freelance</div>
+      <div class="tl-role">Data Scientist</div>
+      <div class="tl-company">SaaS Company · Full-time</div>
     </div>
     <div class="tl-item reveal d1">
-      <div class="tl-year">2020 — 2023</div>
-      <div class="tl-role">UX Designer &<br>Data Analyst</div>
-      <div class="tl-company">Tech Startup · Series B</div>
+      <div class="tl-year">2021 — 2023</div>
+      <div class="tl-role">M.Sc. Applied<br>Computing</div>
+      <div class="tl-company">Graduate School</div>
     </div>
     <div class="tl-item reveal d1">
-      <div class="tl-year">2017 — 2020</div>
-      <div class="tl-role">Web Designer</div>
-      <div class="tl-company">Digital Agency</div>
+      <div class="tl-year">2020 — 2021</div>
+      <div class="tl-role">Data &<br>Analytics Intern</div>
+      <div class="tl-company">Tech Company</div>
     </div>
     <div class="tl-item reveal d2">
-      <div class="tl-year">2013 — 2017</div>
-      <div class="tl-role">BA Visual<br>Communication</div>
-      <div class="tl-company">Design School</div>
+      <div class="tl-year">2017 — 2021</div>
+      <div class="tl-role">B.Sc. Computing</div>
+      <div class="tl-company">University</div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-bg">Contact.</div>
+  <div class="contact-bg">Hello.</div>
   <div class="contact-inner">
     <div class="section-label reveal">Get in Touch</div>
     <h2 class="contact-heading reveal d1">
-      Let's<br><em>work.</em>
+      Say<br><em>hello.</em>
     </h2>
     <p class="contact-sub reveal d2">
-      Open to new projects, collaborations, and full-time roles.<br>Usually reply within 24 hours.
+      Always happy to chat about data, side projects, or interesting ideas. No formal agenda required.
     </p>
     <div class="contact-links reveal d3">
-      <a href="mailto:hello@alexliu.design" class="contact-link">
+      <a href="mailto:alex@example.com" class="contact-link">
         <div class="cl-left">
           <span class="cl-type">Email</span>
-          <span class="cl-val">hello@alexliu.design</span>
+          <span class="cl-val">alex@example.com</span>
         </div>
         <span class="cl-arrow">↗</span>
       </a>
-      <a href="#" class="contact-link">
+      <a href="https://www.linkedin.com/in/alex-liu-0444b5267/" target="_blank" rel="noopener" class="contact-link">
         <div class="cl-left">
           <span class="cl-type">LinkedIn</span>
-          <span class="cl-val">linkedin.com/in/alexliu</span>
+          <span class="cl-val">alex-liu-0444b5267</span>
         </div>
         <span class="cl-arrow">↗</span>
       </a>
-      <a href="#" class="contact-link">
-        <div class="cl-left">
-          <span class="cl-type">Dribbble</span>
-          <span class="cl-val">dribbble.com/alexliu</span>
-        </div>
-        <span class="cl-arrow">↗</span>
-      </a>
-      <a href="#" class="contact-link">
+      <a href="https://github.com/alex-ai-studio" target="_blank" rel="noopener" class="contact-link">
         <div class="cl-left">
           <span class="cl-type">GitHub</span>
-          <span class="cl-val">github.com/alexliu</span>
+          <span class="cl-val">alex-ai-studio</span>
         </div>
         <span class="cl-arrow">↗</span>
       </a>
@@ -780,46 +276,9 @@
 
 <footer>
   <span>Alex Liu © 2025</span>
-  <span>Web Designer · Data Expert</span>
+  <span>Data Scientist · Builder</span>
 </footer>
 
-<script>
-  // Cursor
-  const cur = document.getElementById('cur');
-  document.addEventListener('mousemove', e => {
-    cur.style.left = e.clientX + 'px';
-    cur.style.top  = e.clientY + 'px';
-  });
-  document.querySelectorAll('a, .work-item, .skill-row').forEach(el => {
-    el.addEventListener('mouseenter', () => cur.classList.add('big'));
-    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
-  });
-
-  // Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Counters
-  document.querySelectorAll('.stat-num').forEach(el => {
-    const raw = el.textContent.trim();
-    const num = parseInt(raw);
-    if (isNaN(num)) return;
-    const suffix = raw.replace(/[\d]/g, '');
-    let started = false;
-    new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !started) {
-        started = true;
-        let v = 0; const step = num / 50;
-        const t = setInterval(() => {
-          v = Math.min(v + step, num);
-          el.textContent = Math.round(v) + suffix;
-          if (v >= num) clearInterval(t);
-        }, 20);
-      }
-    }).observe(el);
-  });
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

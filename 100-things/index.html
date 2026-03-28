@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Things — Alex Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+
+<nav>
+  <a class="nav-logo" href="/">Alex Liu</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/100-things/" class="active">100 Things</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="inner-hero">
+  <div class="inner-hero-label">Bucket List</div>
+  <h1 class="inner-hero-title">
+    100 things<br>
+    before I <em>die.</em>
+  </h1>
+  <p class="inner-hero-sub">
+    A living list. Some are adventures, some are quiet. All of them matter to me.
+  </p>
+</div>
+
+<!-- LIST -->
+<div class="things-container">
+
+  <!-- PROGRESS -->
+  <div class="things-progress">
+    <div class="progress-header">
+      <div class="progress-count"><span id="done-count">0</span> / 100</div>
+      <div class="progress-label">completed</div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- TRAVEL -->
+  <div class="things-category">
+    <div class="things-cat-title">Travel</div>
+
+    <div class="thing-item reveal" data-id="1">
+      <span class="thing-num">01</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">See the Northern Lights in Iceland</span>
+    </div>
+    <div class="thing-item reveal" data-id="2">
+      <span class="thing-num">02</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Spend a month in Japan</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="3">
+      <span class="thing-num">03</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Road trip along the Pacific Coast Highway</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="4">
+      <span class="thing-num">04</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Visit Patagonia</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="5">
+      <span class="thing-num">05</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Take the Trans-Siberian Railway</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="6">
+      <span class="thing-num">06</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">See the Sahara Desert at sunrise</span>
+    </div>
+    <div class="thing-item reveal" data-id="7">
+      <span class="thing-num">07</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Visit all 7 continents</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="8">
+      <span class="thing-num">08</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Live in a foreign city for at least 3 months</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="9">
+      <span class="thing-num">09</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Watch a sunrise at Angkor Wat</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="10">
+      <span class="thing-num">10</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Backpack Southeast Asia</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="11">
+      <span class="thing-num">11</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Hike the Appalachian Trail (a section, at least)</span>
+    </div>
+    <div class="thing-item reveal" data-id="12">
+      <span class="thing-num">12</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">See the cherry blossoms bloom in Kyoto</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="13">
+      <span class="thing-num">13</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Swim in bioluminescent water</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="14">
+      <span class="thing-num">14</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Travel somewhere completely unplanned, last-minute ticket only</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="15">
+      <span class="thing-num">15</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Stay in a remote mountain cabin with no internet for a week</span>
+    </div>
+  </div>
+
+  <!-- CAREER & LEARNING -->
+  <div class="things-category">
+    <div class="things-cat-title">Career & Learning</div>
+
+    <div class="thing-item reveal" data-id="16">
+      <span class="thing-num">16</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Give a talk at a conference</span>
+    </div>
+    <div class="thing-item reveal" data-id="17">
+      <span class="thing-num">17</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Build a product that 1,000 people use</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="18">
+      <span class="thing-num">18</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Publish a research paper or technical article</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="19">
+      <span class="thing-num">19</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Write 50 blog posts</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="20">
+      <span class="thing-num">20</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn a new programming language from scratch</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="21">
+      <span class="thing-num">21</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Mentor someone in data science</span>
+    </div>
+    <div class="thing-item reveal" data-id="22">
+      <span class="thing-num">22</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Work remotely from another country for a month</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="23">
+      <span class="thing-num">23</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Launch a side project that earns its first dollar</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="24">
+      <span class="thing-num">24</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Read 100 books</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="25">
+      <span class="thing-num">25</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Contribute meaningfully to an open-source project</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="26">
+      <span class="thing-num">26</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Lead a team</span>
+    </div>
+    <div class="thing-item reveal" data-id="27">
+      <span class="thing-num">27</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to speak a second language conversationally</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="28">
+      <span class="thing-num">28</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Take an improv comedy class</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="29">
+      <span class="thing-num">29</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Teach a class or workshop</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="30">
+      <span class="thing-num">30</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Build something with hardware (robotics, electronics)</span>
+    </div>
+  </div>
+
+  <!-- ADVENTURES -->
+  <div class="things-category">
+    <div class="things-cat-title">Adventures</div>
+
+    <div class="thing-item reveal" data-id="31">
+      <span class="thing-num">31</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Go skydiving</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="32">
+      <span class="thing-num">32</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to surf</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="33">
+      <span class="thing-num">33</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Climb a mountain above 4,000m</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="34">
+      <span class="thing-num">34</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Go scuba diving on a coral reef</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="35">
+      <span class="thing-num">35</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Complete a marathon</span>
+    </div>
+    <div class="thing-item reveal" data-id="36">
+      <span class="thing-num">36</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Camp under the stars somewhere truly dark</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="37">
+      <span class="thing-num">37</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn rock climbing</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="38">
+      <span class="thing-num">38</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Swim with whale sharks</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="39">
+      <span class="thing-num">39</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Go white water rafting</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="40">
+      <span class="thing-num">40</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Ride a motorcycle cross-country</span>
+    </div>
+    <div class="thing-item reveal" data-id="41">
+      <span class="thing-num">41</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Watch a solar eclipse</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="42">
+      <span class="thing-num">42</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Stay at a silent retreat for a week</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="43">
+      <span class="thing-num">43</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to sail</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="44">
+      <span class="thing-num">44</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Spend a full night in a tree house</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="45">
+      <span class="thing-num">45</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Go bungee jumping</span>
+    </div>
+  </div>
+
+  <!-- PERSONAL GROWTH -->
+  <div class="things-category">
+    <div class="things-cat-title">Personal Growth</div>
+
+    <div class="thing-item reveal" data-id="46">
+      <span class="thing-num">46</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Keep a daily journal for one full year</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="47">
+      <span class="thing-num">47</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Meditate every day for 30 days straight</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="48">
+      <span class="thing-num">48</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Do a digital detox for a full week</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="49">
+      <span class="thing-num">49</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to cook 20 dishes from scratch</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="50">
+      <span class="thing-num">50</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Call my parents every week for a year</span>
+    </div>
+    <div class="thing-item reveal" data-id="51">
+      <span class="thing-num">51</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to play a musical instrument</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="52">
+      <span class="thing-num">52</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Read the complete works of one author I admire</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="53">
+      <span class="thing-num">53</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Wake up before 6am for 60 days in a row</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="54">
+      <span class="thing-num">54</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Finish a creative project purely for myself, with no audience in mind</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="55">
+      <span class="thing-num">55</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Write a letter to my future self to be opened in 10 years</span>
+    </div>
+    <div class="thing-item reveal" data-id="56">
+      <span class="thing-num">56</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to draw — properly</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="57">
+      <span class="thing-num">57</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Complete a 30-day fitness challenge</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="58">
+      <span class="thing-num">58</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Have a conversation that genuinely changes how I see something</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="59">
+      <span class="thing-num">59</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Volunteer regularly for something I care about</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="60">
+      <span class="thing-num">60</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Build a habit that sticks for more than 6 months</span>
+    </div>
+    <div class="thing-item reveal" data-id="61">
+      <span class="thing-num">61</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Say yes to something that genuinely scares me</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="62">
+      <span class="thing-num">62</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Stop apologising for things that aren't my fault</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="63">
+      <span class="thing-num">63</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to be comfortable with silence</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="64">
+      <span class="thing-num">64</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Spend a week living with less than what fits in a backpack</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="65">
+      <span class="thing-num">65</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Forgive someone I've been holding a grudge against</span>
+    </div>
+  </div>
+
+  <!-- EXPERIENCES -->
+  <div class="things-category">
+    <div class="things-cat-title">Experiences</div>
+
+    <div class="thing-item reveal" data-id="66">
+      <span class="thing-num">66</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Attend a major music festival</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="67">
+      <span class="thing-num">67</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">See my favourite band live</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="68">
+      <span class="thing-num">68</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Watch a World Cup match in person</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="69">
+      <span class="thing-num">69</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Attend a TEDx talk</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="70">
+      <span class="thing-num">70</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Eat at a Michelin-starred restaurant</span>
+    </div>
+    <div class="thing-item reveal" data-id="71">
+      <span class="thing-num">71</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Go to a midnight screening of a classic film</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="72">
+      <span class="thing-num">72</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Take a cooking class in another country</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="73">
+      <span class="thing-num">73</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Witness a natural wonder I've only seen in photos</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="74">
+      <span class="thing-num">74</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Pull an all-nighter to finish something I'm proud of</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="75">
+      <span class="thing-num">75</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Go to a hackathon and build something from scratch in 24 hours</span>
+    </div>
+    <div class="thing-item reveal" data-id="76">
+      <span class="thing-num">76</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Watch the sun rise after staying up all night talking</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="77">
+      <span class="thing-num">77</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Learn to make sourdough bread</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="78">
+      <span class="thing-num">78</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Brew my own beer or make my own wine</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="79">
+      <span class="thing-num">79</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Attend a New Year's Eve countdown in a different city each year for 5 years</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="80">
+      <span class="thing-num">80</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Catch a live sports event in a foreign country</span>
+    </div>
+  </div>
+
+  <!-- THINGS TO BUILD -->
+  <div class="things-category">
+    <div class="things-cat-title">Things to Build & Create</div>
+
+    <div class="thing-item reveal" data-id="81">
+      <span class="thing-num">81</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Build a personal finance tracker that actually works for me</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="82">
+      <span class="thing-num">82</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Create a data visualisation people actually share</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="83">
+      <span class="thing-num">83</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Make a short film or documentary</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="84">
+      <span class="thing-num">84</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Design and print a physical photo book</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="85">
+      <span class="thing-num">85</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Release an open-source tool that gets starred on GitHub</span>
+    </div>
+    <div class="thing-item reveal" data-id="86">
+      <span class="thing-num">86</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Write a long-form essay I'm genuinely proud of</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="87">
+      <span class="thing-num">87</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Build a mobile app that solves a problem I have</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="88">
+      <span class="thing-num">88</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Start and finish a creative side project in a single weekend</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="89">
+      <span class="thing-num">89</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Make something physical with my hands — woodwork, pottery, anything</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="90">
+      <span class="thing-num">90</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Build a personal dashboard for my own life data</span>
+    </div>
+  </div>
+
+  <!-- THE REST -->
+  <div class="things-category">
+    <div class="things-cat-title">The Rest</div>
+
+    <div class="thing-item reveal" data-id="91">
+      <span class="thing-num">91</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Plant a tree</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="92">
+      <span class="thing-num">92</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">See a shooting star and make a wish</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="93">
+      <span class="thing-num">93</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Donate a meaningful amount to a cause I believe in</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="94">
+      <span class="thing-num">94</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Sit in silence for an hour without checking my phone</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="95">
+      <span class="thing-num">95</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Reconnect with someone I've lost touch with</span>
+    </div>
+    <div class="thing-item reveal" data-id="96">
+      <span class="thing-num">96</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Leave a generous tip that makes someone's day</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="97">
+      <span class="thing-num">97</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Own fewer things than I did last year</span>
+    </div>
+    <div class="thing-item reveal d1" data-id="98">
+      <span class="thing-num">98</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Tell the people I love that I love them, more often</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="99">
+      <span class="thing-num">99</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Be genuinely present, at least one full day each week</span>
+    </div>
+    <div class="thing-item reveal d2" data-id="100">
+      <span class="thing-num">100</span>
+      <div class="thing-check"><div class="thing-dot"></div></div>
+      <span class="thing-text">Look back at this list in 20 years and smile</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Alex Liu © 2025</span>
+  <span>Data Scientist · Builder</span>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  const STORAGE_KEY = 'alex-100-things';
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.thing-item.done').length;
+    document.getElementById('done-count').textContent = done;
+    document.getElementById('progress-fill').style.width = (done) + '%';
+  }
+
+  // Init
+  const state = loadState();
+  document.querySelectorAll('.thing-item').forEach(item => {
+    const id = item.dataset.id;
+    if (state[id]) item.classList.add('done');
+
+    item.addEventListener('click', () => {
+      item.classList.toggle('done');
+      state[id] = item.classList.contains('done');
+      saveState(state);
+      updateProgress();
+    });
+  });
+
+  updateProgress();
+</script>
+</body>
+</html>
