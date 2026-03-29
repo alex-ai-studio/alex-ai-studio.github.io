@@ -11,6 +11,14 @@ if (cur) {
   });
 }
 
+// White cursor on dark-background sections
+['skills', 'timeline'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('mouseenter', () => document.body.classList.add('on-dark'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('on-dark'));
+});
+
 // Scroll reveal
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });

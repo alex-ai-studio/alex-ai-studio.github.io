@@ -53,13 +53,15 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: var(--black);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .nav-logo {
   font-family: var(--serif);
   font-size: 1.1rem;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: var(--black);
+  color: var(--white);
   text-decoration: none;
 }
 .nav-links {
@@ -72,7 +74,7 @@ nav {
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--black);
+  color: var(--white);
   text-decoration: none;
   opacity: 0.4;
   transition: opacity .25s;
@@ -550,6 +552,15 @@ footer span {
   text-transform: uppercase;
   color: var(--mid);
 }
+
+/* ==============================
+   CURSOR ON DARK SECTIONS
+   ============================== */
+body.on-dark .cur { background: var(--white); }
+body.on-dark .cur.big { background: transparent; border-color: var(--white); }
+
+/* Single-entry timeline */
+.tl-single { grid-template-columns: 1fr; max-width: 360px; }
 
 /* ==============================
    REVEAL ANIMATIONS
