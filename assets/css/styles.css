@@ -53,15 +53,15 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--black);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: var(--grey);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 .nav-logo {
   font-family: var(--serif);
   font-size: 1.1rem;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
 }
 .nav-links {
@@ -74,7 +74,7 @@ nav {
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
   opacity: 0.4;
   transition: opacity .25s;
