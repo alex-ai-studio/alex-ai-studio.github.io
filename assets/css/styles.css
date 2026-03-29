@@ -557,7 +557,7 @@ footer span {
    CURSOR ON DARK SECTIONS
    ============================== */
 body.on-dark .cur { background: var(--white); }
-body.on-dark .cur.big { background: transparent; border-color: var(--white); }
+body.on-dark .cur.big { background: transparent; border: 1px solid var(--white); }
 
 /* Single-entry timeline */
 .tl-single { grid-template-columns: 1fr; max-width: 360px; }
