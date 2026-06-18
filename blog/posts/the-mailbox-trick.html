@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mailbox Trick — Alex Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+
+<nav>
+  <a class="nav-logo" href="/">Alex Liu</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/100-things/">100 Things</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="post-wrap">
+
+  <a href="/blog/" class="post-back">← All posts</a>
+
+  <div class="post-header">
+    <div class="post-cat">Tools</div>
+    <h1 class="post-title">The <em>Mailbox</em> Trick</h1>
+    <div class="post-meta">
+      <span>Jun 2026</span>
+      <span>4 min read</span>
+    </div>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <div class="post-body">
+    <p>
+      Today I did something that felt like cheating. I added three new secrets to a project's encrypted env file — secrets a teammate would later read on his machine — without ever holding the key to decrypt anything in that file. Not the new values. Not the old ones. Nothing.
+    </p>
+
+    <p>
+      That's the moment I finally understood, in my bones, what asymmetric encryption actually does. And I want to write it down because the mental model that clicked for me is embarrassingly simple.
+    </p>
+
+    <h2>Two keys, not one</h2>
+
+    <p>
+      The tool I was using is called <strong>dotenvx</strong>. It encrypts the values in a <code>.env</code> file so the file itself can be safely committed to git. Anyone can read the repo. Nobody (without the right key) can read the secrets.
+    </p>
+
+    <p>
+      The trick is that encryption and decryption use <em>different</em> keys:
+    </p>
+
+    <ul>
+      <li><strong>Public key</strong> — sits in <code>.env.local</code>, committed to git, visible to literally anyone on the internet. Used only to <em>lock things up</em>.</li>
+      <li><strong>Private key</strong> — sits in <code>.env.keys</code>, never committed, shared only between teammates. Used only to <em>unlock things</em>.</li>
+    </ul>
+
+    <p>
+      They're mathematically related, but you can't derive one from the other in any reasonable amount of time. The public key locks the box. Only the private key opens it.
+    </p>
+
+    <h2>The mailbox</h2>
+
+    <p>
+      Here's the analogy that finally made it click:
+    </p>
+
+    <p>
+      Imagine a mailbox bolted to a wall in public. There's a <strong>slot</strong> on the front. Anyone walking past can drop a letter in. No ID required, no questions asked. The slot only goes one way — once your letter is inside, you can't fish it back out.
+    </p>
+
+    <p>
+      Around the back, there's a <strong>locked door</strong>. Only the postman has the key. He's the only person who can open it up, pull the letters out, and read them.
+    </p>
+
+    <p>
+      That's it. That's the whole thing.
+    </p>
+
+    <ul>
+      <li>The mailbox slot is the <strong>public key</strong>.</li>
+      <li>The back-door key is the <strong>private key</strong>.</li>
+    </ul>
+
+    <blockquote>
+      Locking is public. Unlocking is private. Two completely separate powers, on two completely separate keys.
+    </blockquote>
+
+    <h2>What this means in practice</h2>
+
+    <p>
+      I was working on a branch. I needed to add some new config values into the encrypted env file. I didn't have my teammate's private key. I'd never had it. I never needed it.
+    </p>
+
+    <p>
+      I just walked up to the mailbox, dropped my letters into the public slot, and committed the result. Git delivered the sealed envelopes. My teammate pulled the branch, and the private key he'd been holding since day one opened them right up.
+    </p>
+
+    <p>
+      No coordination. No Slack thread saying "hey, can you share the new value with me?" No password manager hand-off. Just <code>git pull</code>, and his existing setup did the rest.
+    </p>
+
+    <h2>Why this is quietly genius</h2>
+
+    <p>
+      Once you see it, the implications are everywhere:
+    </p>
+
+    <ul>
+      <li>A brand new contributor can add secrets to a repo on day one — they just need the public key, which is already in the file.</li>
+      <li>A CI bot or background agent can encrypt new values without ever holding decryption power. If it gets compromised, it can lock things up, but it can't read anything.</li>
+      <li>Rotating the private key is a deliberate event. Adding new encrypted values is not — anyone can do it.</li>
+    </ul>
+
+    <p>
+      The genius of the design is that it <em>separates the authority to write secrets from the authority to read them</em>. Most security systems collapse those two powers into one credential. This one doesn't. Which means the credential you protect with your life (the private key) gets shared as rarely as possible, while the credential that gets handled by anything and everything (the public key) is harmless if leaked. Because it already is leaked. That's the point.
+    </p>
+
+    <h2>How to spot it yourself</h2>
+
+    <p>
+      If you open an encrypted env file, you'll see lines like:
+    </p>
+
+    <p>
+      <code>NEXT_PUBLIC_API_URL=encrypted:BCkLTy/Vg+CV...</code>
+    </p>
+
+    <p>
+      The <code>encrypted:</code> prefix marks values that were sealed with the public key. To anyone without the private key, the rest is gibberish. To anyone with it, it's a real URL, a real token, a real secret — restored at runtime, used to boot the app, then thrown away.
+    </p>
+
+    <p>
+      That little prefix is doing a surprising amount of work. It's the visible edge of an idea that took mathematicians a long time to find and engineers a long time to get comfortable with: the idea that you can give the whole world the power to send you a secret, while keeping the power to read it entirely to yourself.
+    </p>
+
+    <p>
+      I added three letters to a mailbox today. I never held the key. The system worked anyway. That's the whole story.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <span>Alex Liu © 2026</span>
+  <span>Data Scientist · Builder</span>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
