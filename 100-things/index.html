@@ -614,9 +614,18 @@
 <script src="../assets/js/main.js"></script>
 <script>
   const STORAGE_KEY = 'alex-100-things';
+  const DEFAULT_DONE = [1,5,6,7,14,18,20,22,23,24,27,29,33];
 
   function loadState() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === null) {
+        const defaults = {};
+        DEFAULT_DONE.forEach(id => { defaults[id] = true; });
+        return defaults;
+      }
+      return JSON.parse(saved) || {};
+    }
     catch { return {}; }
   }
 
@@ -632,6 +641,7 @@
 
   // Init
   const state = loadState();
+  saveState(state);
   document.querySelectorAll('.thing-item').forEach(item => {
     const id = item.dataset.id;
     if (state[id]) item.classList.add('done');
