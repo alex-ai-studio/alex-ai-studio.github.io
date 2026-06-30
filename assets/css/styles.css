@@ -772,6 +772,30 @@ body.on-dark .cur.big { background: transparent; border: 1px solid var(--white);
   color: #666;
   line-height: 1.7;
 }
+.post-body code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--grey);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--black);
+}
+.post-body pre {
+  background: var(--grey);
+  border-left: 2px solid var(--klein);
+  padding: 18px 22px;
+  margin: 1.8em 0;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+.post-body pre code {
+  background: none;
+  padding: 0;
+  font-size: 1em;
+  color: #333;
+  white-space: pre;
+}
 .post-body p:first-of-type::first-letter {
   font-family: var(--serif);
   font-size: 4.4em;

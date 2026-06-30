@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Green Light That Lied — Alex Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+
+<nav>
+  <a class="nav-logo" href="/">Alex Liu</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/100-things/">100 Things</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="post-wrap">
+
+  <a href="/blog/" class="post-back">← All posts</a>
+
+  <div class="post-header">
+    <div class="post-cat">Tools</div>
+    <h1 class="post-title">The Green Light That <em>Lied</em></h1>
+    <div class="post-meta">
+      <span>Jun 2026</span>
+      <span>3 min read</span>
+    </div>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <div class="post-body">
+    <p>
+      CyberPanel's SSL dashboard recently told me a certificate was active. The "days remaining" column, on the same row, said <strong>-2</strong>.
+    </p>
+
+    <p>
+      Both of these things were displayed at the same time, on the same screen, and the panel was not embarrassed about it.
+    </p>
+
+    <h2>What "Active" actually means</h2>
+
+    <p>
+      I'd assumed "Active" meant the certificate was valid. It turns out it means: a file exists in the expected directory.
+    </p>
+
+    <p>
+      That's the whole check. The file could be expired, self-signed, or years old. As long as something is sitting at the path the panel expects, the status reads green. A missing indicator makes you go look. A misleading one stops you from looking.
+    </p>
+
+    <h2>Why the certificate expired</h2>
+
+    <p>
+      Let's Encrypt certificates last 90 days and renew automatically. CyberPanel uses <code>acme.sh</code> to handle this — except that at some point, the default certificate authority was changed from Let's Encrypt to ZeroSSL.
+    </p>
+
+    <p>
+      ZeroSSL is fine. It just requires <strong>EAB credentials</strong> before it'll accept ACME requests. CyberPanel's installer doesn't always set these up. The first manual issuance works, because the user can authenticate interactively. The nightly cron renewal fails, because it can't. Every night. For months. The dashboard reports green throughout, because the original file still exists, expired or not.
+    </p>
+
+    <h2>The fix</h2>
+
+    <p>
+      Two commands over SSH. Switch <code>acme.sh</code> back to Let's Encrypt as the default, then force a new issuance:
+    </p>
+
+    <pre><code>/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+
+/root/.acme.sh/acme.sh --issue \
+  -d example.com -d www.example.com \
+  --cert-file /etc/letsencrypt/live/example.com/cert.pem \
+  --key-file /etc/letsencrypt/live/example.com/privkey.pem \
+  --fullchain-file /etc/letsencrypt/live/example.com/fullchain.pem \
+  --webroot /home/example.com/public_html --force</code></pre>
+
+    <p>
+      Then <code>systemctl restart lsws</code>.
+    </p>
+
+    <p>
+      One more thing if it's a WordPress site: WordPress's rewrite rules intercept the ACME challenge URL and break validation. Add this line to the top of <code>.htaccess</code>:
+    </p>
+
+    <pre><code>RewriteRule ^\.well-known/acme-challenge/ - [L]</code></pre>
+
+    <p>
+      Cost: zero. Future grief avoided: substantial.
+    </p>
+
+    <h2>The pattern worth noticing</h2>
+
+    <p>
+      Self-hosted infrastructure is usually a stack of independently maintained projects — control panel, web server, ACME client, CMS — each sensibly designed for its own users. The behaviour at the seams between them is nobody's responsibility.
+    </p>
+
+    <p>
+      This is where reliability quietly erodes. Not in any one component, but in the gaps. The pieces remain individually healthy. The composite degrades in ways that aren't anyone's bug.
+    </p>
+
+    <blockquote>
+      A green light that confidently reports the wrong check is worse than the underlying failure. The failure is two commands to fix. The misleading indicator is what kept me from noticing for three months.
+    </blockquote>
+
+    <p>
+      The dashboard still says <strong>Active</strong>.
+    </p>
+
+    <p>
+      It will keep saying that no matter what's true.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <span>Alex Liu © 2026</span>
+  <span>Data Scientist · Builder</span>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
